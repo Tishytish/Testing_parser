@@ -126,7 +126,13 @@ public final class WProgram implements Examinable {
 	@Override
 	public String toString() {
 // TODO: short code snippet
-throw new ece351.util.Todo351Exception();
+
+    final StringBuilder sb = new StringBuilder();
+    for (final Waveform w : waveforms) {
+        sb.append(w.toString()).append(System.lineSeparator());
+    }
+    return sb.toString();
+
 	}
 
 	/**

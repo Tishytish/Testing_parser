@@ -47,6 +47,38 @@ public final class WRecursiveDescentParser {
     public WProgram parse() {
     	// STUB: return null;
 // TODO: longer code snippet
-throw new ece351.util.Todo351Exception();
+      ImmutableList<Waveform> waveforms = ImmutableList.of();
+        waveforms = waveforms.append(waveform());
+        while (!lexer.inspectEOF()) {
+            waveforms = waveforms.append(waveform());
+        }
+        lexer.consumeEOF();
+        return new WProgram(waveforms);
+    }
+
+    private Waveform waveform() {
+        final String name = lexer.consumeID();
+        lexer.consume(":");
+        final ImmutableList<String> bits = bits();
+        lexer.consume(";");
+        return new Waveform(bits, name);
+    }
+
+    private ImmutableList<String> bits() {
+        ImmutableList<String> result = ImmutableList.of();
+        result = result.append(bit());
+        while (lexer.inspect("0") || lexer.inspect("1")) {
+            result = result.append(bit());
+        }
+        return result;
+    }
+
+
+    private String bit() {
+        if (lexer.inspect("0")) {
+            return lexer.consume("0");
+        } else {
+            return lexer.consume("1");
+        }
     }
 }

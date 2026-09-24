@@ -11,7 +11,7 @@
 # If you have multiple collaborators for a given lab, use multiple lines
 # You should have at least one line for each lab.
 lab0 TA abehl@uwaterloo.ca
-lab1 TA abehl@uwaterloo.ca
+lab1 N/A nobody
 lab2 role userid
 lab3 role userid
 lab4 role userid
